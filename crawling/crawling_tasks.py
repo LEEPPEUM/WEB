@@ -35,15 +35,16 @@ def task_crawling_trade(schedule=5, repeat=60*60*24*30):
 
     if res.status_code == 200:
         soup = BeautifulSoup(res.content, 'html.parser')
-        links = soup.find_all('a', class_='link_txt')
         with MongoClient.connect("mongodb://172.17.0.2:27017/") as client:
             cur = client.cursor()
-            title = str()
-            link = str()
-            for link in links:
-                cur.execute("db.KOR.insert({year:"1"},{expDlr:"1"},{impDlr:"1"},{balPayments:"1"},{expCnt:"1"},{impCnt:"1"},{totalCount:"1"})", (title, link))
+            cur.execute("db.KOR.insert({year:"1"},{expDlr:"1"},{impDlr:"1"},{balPayments:"1"},{expCnt:"1"},{impCnt:"1"},{totalCount:"1"})", (title, link))
             con.commit()
-        print('task_crawling_daum: ', type(links), len(links))
+            client.close()
+        print('task_crawling_trade: ', type(links), len(links))
+
+    time_tuple = time.localtime()
+    time_str = time.strftime("%m/%d/%Y, %H:%M:%S", time_tuple)
+    print('task_crawling_trade: ', type(links), len(links), time_str
         
         
 client = MongoClient('mongodb://172.17.0.2:27017/') # with Docker inspect
