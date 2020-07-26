@@ -23,7 +23,7 @@ from pymongo import MongoClient
 client = MongoClient('mongodb://172.17.0.2:27017/') # with Docker inspect
 tradedb = client.tradedb # get Database
 # data = {'title': 'mariaDB 보기', 'tags': ['디비 서비스']}
-board_info = tradedb.KOR.insert_one(data)
+KOR_info = tradedb.KOR.insert_one(data)
 # data = [ {"name": "Ram", "age": "26", "city": "Hyderabad"},
 # {"name": "Rahim", "age": "27", "city": "Bangalore"}]
 res = mydb.board.insert_many(data); 
