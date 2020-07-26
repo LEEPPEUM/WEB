@@ -1,0 +1,43 @@
+{% load forms %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% forms 'trade/forms_w3.css' %}">
+        <script>
+            function validateform() {
+                var name = document.myform.name.value;
+                if (name == null || name == "") {
+                    var strvalidation = "Name can't be blank";
+                    document.getElementById("demo01").innerHTML = strvalidation;
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <span id="demo01"></span><br>
+        <form name="myform" action="/login" onsubmit="return validateform()">
+        Name: <input type="text" name="name"><br />
+        Password: <input type="password" name="password"><br />
+        <input type="submit" value="register">
+        </form>
+
+        <form class="w3-container" action="/hello/response" method="get">
+            <input class="w3-input" type="text" name="firstname"> 
+            <input class="w3-input" type="password" name="psw"> 
+            <select name="cars"> 
+                <option value="volvo">Volvo</option>
+                <option value="audi">Audi</option>
+            </select>
+            <input class="w3-input" type="radio" name="gender" value="male" checked> Male
+            <input class="w3-input" type="radio" name="gender" value="female"> Female
+            <input class="w3-input" type="checkbox" name="vehicle1" value="Bike"> I have a bike
+            <input class="w3-input" type="checkbox" name="vehicle2" value="Car"> I have a car
+            <textarea class="w3-input" name="message" rows="10" cols="30">Sample.</textarea>
+            <button class="w3-input" type="button" onclick="alert('Hello World!')">Click!</button>
+            <input class="w3-input" type="submit" value="Submit"><input type="reset">
+
+        </form>
+    </body>
+</html>
